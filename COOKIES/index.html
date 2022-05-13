@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Cookies</title>
+    <meta charset="UTF-8">
+    <script>
+        function criarCookie(nome, valor, expira) {
+            var dtExpira = "expires= " + expira;
+            document.cookie = nome + " = " + valor + "; " + dtExpira;
+        }
+        function lerCookie(nome) {
+            var vnome = nome + " = ";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt[0] == " ") {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(vnome) == 0)
+                    return c.substring(vnome.length, c.length);
+            }
+            return ' ';
+        }
+        function iniCookie() {
+            var username = lerCookie("aularc");
+            if (username != " ") {
+                alert(username+"sexo");
+            } else {
+                username = prompt("Digite seu nome: ", "");
+                if (username != " " && username != null) {
+                    criarCookie("aularc", username, "hoje, agora");
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="iniCookie()">
+</body>
+
+</html>
